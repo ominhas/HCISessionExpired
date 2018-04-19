@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">Seesion Expire Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div>
+    <h2>login in page</h2>
+    <div id="login_form">
+        <form name="f1" method="post" id="f1">
+            <table>
+                <tr>
+                    <td class="f1_label">User Name :</td><td><input type="text" name="username" value="" />
+                </td>
+                </tr>
+                <tr>
+                    <td class="f1_label">Password  :</td><td><input type="password" name="password" value=""  />
+                </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <p>Please enter how long your session would be (minutes)</p></td>
+                </tr>
+                <input id="numb">
+                <p></p>
+                <button type="button" onclick="myFunction()">Submit</button></td>
+                <p id="demo"></p>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    function myFunction() {
+        var x, text;
+        x = document.getElementById("numb").value;
+        text="Your session is set to "+x+" minutes";
+        document.getElementById("demo").innerHTML = text;
+        var message;
+        message=x+" minutes remaining";
+        document.getElementById("title").innerHTML =message;
+    }
+</script>
+</body>
+</html>
