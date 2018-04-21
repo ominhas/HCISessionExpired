@@ -22,12 +22,12 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 		$scope.time = $scope.inp*1000;
 		if ($scope.deactivate) {
 			$scope.si = false;
-			$timeout.cancel($scope.timer);
+			$scope.canceller();
 		}
 		alert("Updated!");
 	}
 	$scope.logout = function() {
-		$timeout.cancel($scope.timer);
+		$scope.canceller();
 		$scope.logger = "ng-show";
 		$scope.logged = "ng-hide";
 	}
@@ -35,11 +35,11 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 		if ($scope.si && $scope.auth) {
 			$scope.timer = $timeout($scope.expire, $scope.time);
 			$scope.count = $interval($scope.countdown,1000);
-			$scope.counter = $scope.inp;
+			$scope.counter = $scope.inp-1;
 		}
 	}
 	$scope.resetTimer = function() {
-		$timeout.cancel($scope.timer);
+		$scope.canceller();
 	}
 	$scope.countdown = function() {
 		$scope.counter--;
@@ -47,5 +47,10 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 			$scope.counter =  "";
 			$interval.cancel($scope.count);
 		}
+	}
+	$scope.canceller = function() {
+		$timeout.cancel($scope.timer);
+		$interval.cancel($scope.count);
+		$scope.counter = "";
 	}
 });
