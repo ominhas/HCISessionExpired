@@ -43,7 +43,7 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 	}
 	$scope.countdown = function() {
 		$scope.counter--;
-		if ($scope.counter == 0) {
+		if ($scope.counter == -1) {
 			$scope.counter =  "";
 			$interval.cancel($scope.count);
 		}
