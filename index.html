@@ -1,47 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="sessionExpired"  ng-controller="sessionController" ng-mouseleave="setTimer()" ng-mouseover="resetTimer()">
 <head>
     <meta charset="UTF-8">
-    <title id="title">Seesion Expire Prototype</title>
+    <title id="title">Session Expired Prototype</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
-<div>
-    <h2>login in page</h2>
+    <h1>Session Expired Prototype</h1>
     <div id="login_form">
-        <form name="f1" method="post" id="f1">
-            <table>
-                <tr>
-                    <td class="f1_label">User Name :</td><td><input type="text" name="username" value="" />
-                </td>
-                </tr>
-                <tr>
-                    <td class="f1_label">Password  :</td><td><input type="password" name="password" value=""  />
-                </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <p>Please enter how long your session would be (minutes)</p></td>
-                </tr>
-                <input id="numb">
-                <p></p>
-                <button type="button" onclick="myFunction()">Submit</button></td>
-                <p id="demo"></p>
-            </table>
-        </form>
+        <button class="{{logger}}" ng-click="login()">Click to log in!</button>
     </div>
-</div>
-<script>
-    function myFunction() {
-        var x, text;
-        x = document.getElementById("numb").value;
-        text="Your session is set to "+x+" minutes";
-        document.getElementById("demo").innerHTML = text;
-        var message;
-        message=x+" minutes remaining";
-        document.getElementById("title").innerHTML =message;
-    }
-</script>
+    <div id="logged_in" class="{{logged}}">
+        <form>
+            Change Session Expired Time: <input type="number" ng-model="inp" name="inp" min="1" value="15"> seconds<br>
+            Deactivate Session Expiring: <input type="checkbox" ng-model="deactivate" name="deactivate"><br>
+            <button ng-click="update()">Submit</button>
+        </form>
+        <br><br>
+        <button ng-click="logout()">Logout</button>
+    </div>
 </body>
 </html>

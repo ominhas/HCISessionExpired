@@ -1,23 +1,4 @@
-#login_form {
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    right: 30%;
-    bottom: 20%;
-    font-size: 18px;
+html, body {
+    min-height: 100%;
+    text-align: center;
 }
-
-#f1 {
-    background-color: grey;
-    border-style: solid;
-    border-width: 1px;
-}
-
-.f1_label {
-    white-space: nowrap;
-
-}
-#id{
-    border: green;
-}
-
