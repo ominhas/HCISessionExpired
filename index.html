@@ -23,10 +23,10 @@
         <form>
             Change Session Expired Time: <input type="number" ng-model="inp" name="inp" min="1" value="15"> seconds<br>
             Deactivate Session Expiring: <input type="checkbox" ng-model="deactivate" name="deactivate"><br>
-            <button ng-click="update()">Submit</button>
+            <button ng-click="update()" class="btn btn-success">Submit</button>
         </form>
         <br><br>
-        <button ng-click="logout()" class="btn btn-primary">Logout</button>
+        <button ng-click="logout()" class="btn btn-danger">Logout</button>
     </div>
 </body>
 </html>

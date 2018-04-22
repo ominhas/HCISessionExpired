@@ -39,6 +39,7 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 	}
 	$scope.setTimer = function() {
 		if ($scope.si && $scope.auth) {
+			$scope.title = "s Session Expired Prototype";
 			$scope.timer = $timeout($scope.expire, $scope.time);
 			$scope.count = $interval($scope.countdown,500);
 			$scope.counter = $scope.inp-1;
@@ -49,7 +50,7 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 	}
 	$scope.countdown = function() {
 		if($scope.blink) {
-			$scope.title = " Session Expired Prototype";
+			$scope.title = "s Session Expired Prototype";
 			$scope.counter = $scope.tmpcounter;
 			$scope.counter--;
 			if ($scope.counter == -1) {
@@ -69,5 +70,7 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 		$timeout.cancel($scope.timer);
 		$interval.cancel($scope.count);
 		$scope.counter = "";
+		$scope.title = " Session Expired Prototype";
+		$scope.blink = false;
 	}
 });
