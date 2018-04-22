@@ -24,6 +24,9 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 			$scope.si = false;
 			$scope.canceller();
 		}
+		else {
+			$scope.si = true;
+		}
 		alert("Updated!");
 	}
 	$scope.logout = function() {
