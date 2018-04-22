@@ -1,5 +1,8 @@
 var app = angular.module('sessionExpired' ,[]);
 app.controller('sessionController', function($scope, $http, $timeout, $interval) {
+	$scope.title = " Session Expired Prototype";
+	$scope.blink = false;
+	$scope.tmpcounter = 0;
 	$scope.auth = false;
 	$scope.time = 5000;
 	$scope.si = true;
@@ -36,8 +39,9 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 	}
 	$scope.setTimer = function() {
 		if ($scope.si && $scope.auth) {
+			$scope.title = "s Session Expired Prototype";
 			$scope.timer = $timeout($scope.expire, $scope.time);
-			$scope.count = $interval($scope.countdown,1000);
+			$scope.count = $interval($scope.countdown,500);
 			$scope.counter = $scope.inp-1;
 		}
 	}
@@ -45,15 +49,28 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 		$scope.canceller();
 	}
 	$scope.countdown = function() {
-		$scope.counter--;
-		if ($scope.counter == -1) {
-			$scope.counter =  "";
-			$interval.cancel($scope.count);
+		if($scope.blink) {
+			$scope.title = "s Session Expired Prototype";
+			$scope.counter = $scope.tmpcounter;
+			$scope.counter--;
+			if ($scope.counter == -1) {
+				$scope.counter =  "";
+				$interval.cancel($scope.count);
+			}
+			$scope.blink = false;
+		} else {
+			$scope.title = "CAUTION!!!!!";
+			$scope.tmpcounter = $scope.counter;
+			$scope.counter = "";
+			$scope.blink = true;
 		}
+
 	}
 	$scope.canceller = function() {
 		$timeout.cancel($scope.timer);
 		$interval.cancel($scope.count);
 		$scope.counter = "";
+		$scope.title = " Session Expired Prototype";
+		$scope.blink = false;
 	}
 });
