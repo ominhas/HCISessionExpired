@@ -33,6 +33,7 @@ app.controller('sessionController', function($scope, $http, $timeout, $interval)
 		alert("Updated!");
 	}
 	$scope.logout = function() {
+		$scope.auth = false;
 		$scope.canceller();
 		$scope.logger = "ng-show";
 		$scope.logged = "ng-hide";
